@@ -19,18 +19,12 @@ class Color_Flipper_Tests(unittest.TestCase):
         assert "Color Flipper" in self.driver.title 
 
     def test_button(self):
-        button = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_all_elements_located((By.ID,'btn'))
-            )
+        button = self.driver.find_element_by_id('btn')
         button.click()
         time.sleep(3)
 
-
-        
-
     def tearDown(self) -> None:
         self.driver.close()
-
 
 if __name__ == "__main__":
     unittest.main()
