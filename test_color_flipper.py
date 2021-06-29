@@ -14,10 +14,18 @@ class Color_Flipper_Tests(unittest.TestCase):
     def setUp(self) -> None:
         self.driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe")
         self.driver.get(Color_Flipper_Tests.file_path)
-        time.sleep(5)
 
     def test_title(self):
         assert "Color Flipper" in self.driver.title 
+
+    def test_button(self):
+        button = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located((By.ID,'btn'))
+            )
+        button.click()
+        time.sleep(3)
+
+
         
 
     def tearDown(self) -> None:
